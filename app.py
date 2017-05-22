@@ -7,7 +7,10 @@ app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
-    return render_template("main.html")
+    if (not isLoggedIn()):
+        return render_template('main.html', isLoggedIn = str(False))
+    else:
+        return render_template('main.html', isLoggedIn = str(True))
 
 @app.route('/logout/')
 def logout():
@@ -18,16 +21,17 @@ def logout():
 @app.route('/login/', methods = ['POST'])
 def login():
 	data = request.form
-	if utils.isValidLogin(data['username'], data['pass']):
-		session['userID'] = utils.getUserID(data['username'])
+	if tools.isValidLogin(data['username'], data['pass']):
+		session['userID'] = tools.getUserID(data['username'])
+	return redirect(url_for("showMainPage"))
 
-@app.route("/register")
+@app.route("/register/", methods = ['POST'])
 def register():
 	data = request.form
-	if utils.isValidRegister(data["p1"], data["p2"], d["username"]):
-		utils.register(data["username"], data["p1"])
-		session["userID"] = utils.getUserID(data["username"])
-	return redirect(url_for("root"))
+	if tools.isValidRegister(data["p1"], data["p2"], data["username"]):
+		tools.register(data["username"], data["p1"])
+		session["userID"] = tools.getUserID(data["username"])
+	return redirect(url_for("showMainPage"))
 
 #Helper Functions
 def isLoggedIn():
