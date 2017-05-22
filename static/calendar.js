@@ -25,7 +25,7 @@ var getDay= function(day,month,year){
 var makeCalendar = function(numDays, dayStart){
 	
 	ele = document.getElementById('days')
-	
+	ele.innerHTML="";
 	
     // makes empty space for days of last month//
     for (i=0; i< dayStart; i++){
@@ -72,8 +72,29 @@ var changeMonth= function(month){
 	eleMonth.innerHTML = monthArray[month-1];
 }
 
-var getMonth= getMonthInfo(1,2017);
-changeMonth(1);
+
+var currentMonth=1;
+var getMonth= getMonthInfo(currentMonth,2017);
+
+var clickChangeMonthFoward= function(){
+	currentMonth++;
+	changeMonth(currentMonth);
+	getMonth= getMonthInfo(currentMonth,2017);
+	makeCalendar(getMonth[0],getMonth[1]);
+	console.log(currentMonth);
+	
+}
+
+var clickChangeMonthPrevious= function(){
+	currentMonth--;
+	changeMonth(currentMonth);
+	getMonth= getMonthInfo(currentMonth,2017);
+	makeCalendar(getMonth[0],getMonth[1]);
+	console.log(currentMonth);
+}
+
+
+changeMonth(currentMonth);
 makeCalendar(getMonth[0],getMonth[1]);
 
 
