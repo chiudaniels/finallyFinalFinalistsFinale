@@ -16,7 +16,7 @@ def showMainPage():
 def logout():
 	if isLoggedIn():
 		session.pop('userID')
-	return redirect(url_for("root"))
+	return redirect(url_for("showMainPage"))
 
 @app.route('/login/', methods = ['POST'])
 def login():
