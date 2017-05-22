@@ -32,12 +32,6 @@ def registerAccountInfo(uN, hP):
         
     addAT = "INSERT INTO AccountInfo VALUES ('%s','%s',%d);"%(uN,hP,userID)
     c.execute(addAT)
-
-    default = ""
-    
-    addPT = "INSERT INTO UserInfo VALUES (%d,'%s', '%s', '%s', '%s');"%(userID, default, default, default, default)
-
-    c.execute(addPT)
     db.commit()
     db.close()
 

@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, session, url_for, redirect
-from utils import utils
+
+from utils import tools
 
 app = Flask(__name__)
 app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
-    return render_template("main.html")
+    if (not isLoggedIn()):
+        return render_template('main.html', isLoggedIn = str(False))
+    else:
+        return render_template('main.html', isLoggedIn = str(True))
 
 @app.route('/logout/')
 def logout():
@@ -15,18 +19,19 @@ def logout():
 	return redirect(url_for("root"))
 
 @app.route('/login/', methods = ['POST'])
-def login:
+def login():
 	data = request.form
-	if utils.isValidLogin(data['username'], data['pass']):
-		session['userID'] = utils.getUserID(data['username'])
+	if tools.isValidLogin(data['username'], data['pass']):
+		session['userID'] = tools.getUserID(data['username'])
+	return redirect(url_for("showMainPage"))
 
-@app.route("/register")
+@app.route("/register/", methods = ['POST'])
 def register():
 	data = request.form
-	if utils.isValidRegister(data["p1"], data["p2"], d["username"]):
-		utils.register(data["username"], data["p1"])
-		session["userID"] = utils.getUserID(data["username"])
-	return redirect(url_for("root"))
+	if tools.isValidRegister(data["p1"], data["p2"], data["username"]):
+		tools.register(data["username"], data["p1"])
+		session["userID"] = tools.getUserID(data["username"])
+	return redirect(url_for("showMainPage"))
 
 #Helper Functions
 def isLoggedIn():
@@ -36,6 +41,6 @@ def getUserID():
 	return session["userID"]
 
 #running flask app
-if __name__ = "__main__":
+if __name__ == "__main__":
 	app.debug = True
 	app.run()
