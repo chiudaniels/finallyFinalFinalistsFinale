@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect
-from utils import utils
+
+from utils import tools
 
 app = Flask(__name__)
 app.secret_key = "narutoisbased"
@@ -15,7 +16,7 @@ def logout():
 	return redirect(url_for("root"))
 
 @app.route('/login/', methods = ['POST'])
-def login:
+def login():
 	data = request.form
 	if utils.isValidLogin(data['username'], data['pass']):
 		session['userID'] = utils.getUserID(data['username'])
@@ -36,6 +37,6 @@ def getUserID():
 	return session["userID"]
 
 #running flask app
-if __name__ = "__main__":
+if __name__ == "__main__":
 	app.debug = True
 	app.run()
