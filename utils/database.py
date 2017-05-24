@@ -17,20 +17,13 @@ def getUserID(uN):
     cmd = "SELECT * FROM AccountInfo WHERE username = '%s';"%(uN)
     sel = c.execute(cmd).fetchone()
     db.close()
-    return sel[2]
+    return sel[4]
 
-def registerAccountInfo(uN, hP):
+def registerAccountInfo(uN, hP, type):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
-
-    cmd = "SELECT userID FROM AccountInfo ORDER BY userID DESC;"
-    sel = c.execute(cmd).fetchone()
-    if sel == None: #non-null
-        userID = 1
-    else:
-        userID = sel[0] + 1
         
-    addAT = "INSERT INTO AccountInfo VALUES ('%s','%s',%d);"%(uN,hP,userID)
+    addAT = "INSERT INTO AccountInfo(username,hashedPass,userType,classes) VALUES ('%s','%s','%s','');"%(uN,hP,type)
     c.execute(addAT)
     db.commit()
     db.close()
@@ -45,6 +38,16 @@ def doesUserExist(uN):
         return False
     else:
         return True 
+
+def getUserType(userID):
+    db = sqlite3.connect("data/main.db")
+    c = db.cursor()
+    cmd = "SELECT * FROM AccountInfo WHERE userID = '%s';"%(userID)
+    sel = c.execute(cmd).fetchone()
+    userType = sel[2]
+    print userType
+    db.close()
+    return userType
 
 def getPass(userID):
     db = sqlite3.connect("data/main.db")
