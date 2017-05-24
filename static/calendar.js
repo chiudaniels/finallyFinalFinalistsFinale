@@ -1,3 +1,4 @@
+
 //kraitchik variation
 // var monthDict= {
     // january:0,
@@ -50,18 +51,19 @@ var makeCalendar = function(numDays, dayStart){
 var getMonthInfo = function (month,year){
 	// format: results[numDays, dayofweekstart]
 	results=[0,0]
-	if (month == 1 && year%4 == 0){
+	if (month == 2 && year%4 == 0){
 		results[0]=28;
 	}
-	else if (month == 1 && year%4 != 0){
+	else if (month == 2 && year%4 != 0){
 		results[0]=29;
 	}
 	else if (month%2==0){
-		results[0]=31;
+		results[0]=30;
 	}
 	else{
-		results[0]=30
+	    results[0]=31;
 	}
+    
 	results[1]=getDay(year,month,1);
 	
 	return results
@@ -75,22 +77,37 @@ var changeMonth= function(month){
 
 var currentMonth=1;
 var getMonth= getMonthInfo(currentMonth,2017);
+var currentYear=2017;
+
+var checkYear=function (){
+    if (currentMonth == 13){
+	currentYear++;
+	currentMonth=1;
+    }
+    if (currentMonth == 0){
+	currentYear--;
+	currentMonth=12; 
+    }
+}
+
 
 var clickChangeMonthFoward= function(){
-	currentMonth++;
-	changeMonth(currentMonth);
-	getMonth= getMonthInfo(currentMonth,2017);
-	makeCalendar(getMonth[0],getMonth[1]);
-	console.log(currentMonth);
-	
+    currentMonth++;
+    checkYear();
+    changeMonth(currentMonth);
+    getMonth= getMonthInfo(currentMonth,2017);
+    makeCalendar(getMonth[0],getMonth[1]);
+    console.log(currentMonth);
+    
 }
 
 var clickChangeMonthPrevious= function(){
-	currentMonth--;
-	changeMonth(currentMonth);
-	getMonth= getMonthInfo(currentMonth,2017);
-	makeCalendar(getMonth[0],getMonth[1]);
-	console.log(currentMonth);
+    currentMonth--;
+    checkYear();
+    changeMonth(currentMonth);
+    getMonth= getMonthInfo(currentMonth,2017);
+    makeCalendar(getMonth[0],getMonth[1]);
+    console.log(currentMonth);
 }
 
 
