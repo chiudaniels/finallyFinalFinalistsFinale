@@ -1,0 +1,186 @@
+-<!DOCTYPE html>
+<html>
+  
+  <head>  
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/bootstrap/js/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.logreg{
+			padding: 20px 40px 0px 40px;
+			min-width: 300px;
+		}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+      <div class="container-fluid">
+	<!-- info  -->
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">Jawn</a>
+	</div>
+
+	<!-- title -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Teachers</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+		<li><a href="#">classes</a></li>
+		<li><a href="#">Another action</a></li>
+		<li><a href="#">Something else here</a></li>
+		<li class="divider"></li>
+		<li><a href="#">Separated link</a></li>
+		<li class="divider"></li>
+		<li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+	  </ul>
+	  
+	  <!-- probably dont need
+	  <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+	  </form>
+	  -->
+	  {% if isLoggedIn == "False" %}
+	  <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text"> </p> </li>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Register</b> <span class="caret"></span></a>
+	      <ul id="login-dp" class="dropdown-menu">
+		<li>
+		  <div class="row">
+		    <div class="col-md-12 logreg">
+
+		      <form class="form" role="form" method="POST" action="/register/" accept-charset="UTF-8" id="login-nav">
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputEmail2">Username</label>
+			  <input type="text" class="form-control" name= "username" placeholder="Username" required>
+			</div>
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputPassword2">Password</label>
+			  <input type="password" class="form-control" name= "p1"  placeholder="Password" required>
+			</div>
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputPassword2">Confirm Password</label>
+			  <input type="password" class="form-control" name= "p2"  placeholder="Confirm Password" required>
+			</div>
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleTeacherCode">Teacher Code</label>
+			  <input type="password" class="form-control" name= "code"  placeholder="Teacher Confirmation Code (optional)">
+			</div>
+			
+			<div class="form-group">
+			  <button type="submit" class="btn btn-primary btn-block">Register</button>
+			</div>
+			
+		      </form>
+		    </div>
+		   
+		  </div>
+		</li>
+	      </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+	      <ul id="login-dp" class="dropdown-menu">
+		<li>
+		  <div class="row">
+		    
+		    <div class="col-md-12 logreg">
+		      Login
+		      <form class="form" role="form" method="POST" action="/login/" accept-charset="UTF-8" id="login-nav">
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputEmail2">Username</label>
+			  <input type="text" class="form-control" name= "username" placeholder="Username" required>
+			</div>
+			
+			<div class="form-group">
+			  <label class="sr-only" for="exampleInputPassword2">Password</label>
+			  <input type="password" class="form-control" name= "pass"  placeholder="Password" required>
+			</div>
+			
+			<div class="form-group">
+			  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+			</div>
+			
+		      </form>
+		    </div>
+		   
+		  </div>
+		</li>
+	      </ul>
+            </li>
+	  </ul>
+	  {% else %}
+	  <li><a href="/logout/"><p class="navbar-text navbar-right"> Logout</p></a></li>
+	  {% endif %}
+	  
+	</div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    
+    <div class="row">
+
+      <div class="col-md-8">
+
+		<div class="month"> 
+		  <ul>
+			<li class="prev" onclick="clickChangeMonthPrevious()">&#10094;</li>
+			<li class="next" onclick="clickChangeMonthFoward()">&#10095;</li>
+			<li id="month">
+			  </li>
+			<br>
+			<li>
+			  <span style="font-size:18px"> <p id="year">2016</p> </span>
+			</li>
+		  </ul>
+		</div>
+
+		<ul class="weekdays">
+		  <li>Mo</li>
+		  <li>Tu</li>
+		  <li>We</li>
+		  <li>Th</li>
+		  <li>Fr</li>
+		  <li>Sa</li>
+		  <li>Su</li>
+		</ul>
+
+		<ul class="days" id="days">
+		  <!-- add the dates <li>#</li> through javascript / d3
+		  <li><span class="active">10</span></li>
+		  -->
+		</ul>
+	
+      </div> <!-- col close -->
+
+      <div class="col-md-4">
+      </div>
+      
+    </div> <!-- row close -->
+	
+    <script src="../static/calendar.js"></script>
+  </body>
+  
+</html>
