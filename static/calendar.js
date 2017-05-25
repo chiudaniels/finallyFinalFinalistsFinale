@@ -48,6 +48,8 @@ var makeCalendar = function(numDays, dayStart){
 }
 
 
+//month stuff//
+
 var getMonthInfo = function (month,year){
 	// format: results[numDays, dayofweekstart]
 	results=[0,0]
@@ -77,6 +79,9 @@ var changeMonth= function(month){
 
 var currentMonth=1;
 var getMonth= getMonthInfo(currentMonth,2017);
+///
+
+// year stuff//
 var currentYear=2017;
 
 var checkYear=function (){
@@ -90,10 +95,27 @@ var checkYear=function (){
     }
 }
 
+var changeYear=function(){
+    eleYear=document.getElementById('year');
+    eleYear.innerHTML = currentYear;
+}
 
+///
+
+//add event stuff//
+var getDays = document.getElementById('days');
+var dayLi= getDays.getElementsByTagName("li");
+var addEvent = function(day,event){
+    dayLi[day-1].innerHTML= day + "<br>" + event;
+}
+//
+
+
+//change month stuff//
 var clickChangeMonthFoward= function(){
     currentMonth++;
     checkYear();
+    changeYear();
     changeMonth(currentMonth);
     getMonth= getMonthInfo(currentMonth,2017);
     makeCalendar(getMonth[0],getMonth[1]);
@@ -104,12 +126,13 @@ var clickChangeMonthFoward= function(){
 var clickChangeMonthPrevious= function(){
     currentMonth--;
     checkYear();
+    changeYear();
     changeMonth(currentMonth);
     getMonth= getMonthInfo(currentMonth,2017);
     makeCalendar(getMonth[0],getMonth[1]);
     console.log(currentMonth);
 }
-
+//
 
 changeMonth(currentMonth);
 makeCalendar(getMonth[0],getMonth[1]);
