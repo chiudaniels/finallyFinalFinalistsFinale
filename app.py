@@ -29,7 +29,10 @@ def login():
 def register():
 	data = request.form
 	if tools.isValidRegister(data["p1"], data["p2"], data["username"]):
-		tools.register(data["username"], data["p1"])
+		if data["code"] == "8Y4vnAUlW8X0RQkc146p":
+			tools.register(data["username"], data["p1"],"teacher")
+		else:
+			tools.register(data["username"], data["p1"],"teacher")
 		session["userID"] = tools.getUserID(data["username"])
 	return redirect(url_for("showMainPage"))
 

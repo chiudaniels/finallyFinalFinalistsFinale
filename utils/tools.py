@@ -18,8 +18,8 @@ def getUserID(username):
 def isValidRegister(pass1, pass2, username):
     return pass1 == pass2 and (not database.doesUserExist(username))
 
-def register(username, password):
-    return database.registerAccountInfo(username, hashed(password))
+def register(username, password,type):
+    return database.registerAccountInfo(username, hashed(password),type)
 
 #HELPERS--------------------------------------
 def hashed(unhashed):
