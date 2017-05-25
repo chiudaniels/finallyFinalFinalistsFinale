@@ -21,6 +21,13 @@ def isValidRegister(pass1, pass2, username):
 def register(username, password,type):
     return database.registerAccountInfo(username, hashed(password),type)
 
+#Events----------------------------------------------------
+def getEvent(day,month,year):
+	return database.getEvent(day,month,year)
+
+def getEventInfo(eventID):
+	return database.getEventInfo(eventID)
+
 #HELPERS--------------------------------------
 def hashed(unhashed):
     return hashlib.sha512(unhashed).hexdigest()
