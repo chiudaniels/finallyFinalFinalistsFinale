@@ -1,4 +1,3 @@
-
 //kraitchik variation
 // var monthDict= {
     // january:0,
@@ -19,8 +18,12 @@ var monthArray= ["January","February","March","April","May",
 "June","July","August","September","October","November","December"];
 
 var getDay= function(day,month,year){
-	d = new Date(year,month,day);
-	return d.getDay();
+    d = new Date(year,month-1,day);
+    console.log(d.getDate());
+    console.log(d.getMonth());
+    console.log(d.getFullYear());
+    console.log(d.getDay());
+    return d.getDay();
 }
 
 var makeCalendar = function(numDays, dayStart){
@@ -29,7 +32,7 @@ var makeCalendar = function(numDays, dayStart){
 	ele.innerHTML="";
 	
     // makes empty space for days of last month//
-    for (i=0; i< dayStart; i++){
+    for (i=0; i< dayStart-1; i++){
 		makeLi= document.createElement("li");
 		addDay= document.createTextNode(' ');
 		makeLi.appendChild(addDay);
@@ -53,10 +56,10 @@ var makeCalendar = function(numDays, dayStart){
 var getMonthInfo = function (month,year){
 	// format: results[numDays, dayofweekstart]
 	results=[0,0]
-	if (month == 2 && year%4 == 0){
+	if (month == 2 && year%4 != 0){
 		results[0]=28;
 	}
-	else if (month == 2 && year%4 != 0){
+	else if (month == 2 && year%4 == 0){
 		results[0]=29;
 	}
 	else if (month%2==0){
@@ -66,7 +69,7 @@ var getMonthInfo = function (month,year){
 	    results[0]=31;
 	}
     
-	results[1]=getDay(year,month,1);
+	results[1]=getDay(1,month,year);
 	
 	return results
 	}
@@ -119,7 +122,7 @@ var clickChangeMonthFoward= function(){
     changeMonth(currentMonth);
     getMonth= getMonthInfo(currentMonth,2017);
     makeCalendar(getMonth[0],getMonth[1]);
-    console.log(currentMonth);
+    //console.log(currentMonth);
     
 }
 
@@ -130,10 +133,11 @@ var clickChangeMonthPrevious= function(){
     changeMonth(currentMonth);
     getMonth= getMonthInfo(currentMonth,2017);
     makeCalendar(getMonth[0],getMonth[1]);
-    console.log(currentMonth);
+   // console.log(currentMonth);
 }
 //
 
+getDay(2017,4,26);
 changeMonth(currentMonth);
 makeCalendar(getMonth[0],getMonth[1]);
 
