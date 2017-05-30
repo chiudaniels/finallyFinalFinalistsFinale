@@ -1,6 +1,8 @@
 import sqlite3
 
 #AccountInfo Table -----------------------------------------------------
+
+#Checking if the account exists when logging in
 def isValidAccountInfo(uN, hP):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -11,6 +13,7 @@ def isValidAccountInfo(uN, hP):
         return False
     return True
 
+#Obtaining the user ID
 def getUserID(uN):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -19,6 +22,7 @@ def getUserID(uN):
     db.close()
     return sel[4]
 
+#Registering the account information and type of account
 def registerAccountInfo(uN, hP, type):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -28,6 +32,7 @@ def registerAccountInfo(uN, hP, type):
     db.commit()
     db.close()
 
+#Checking if the accounts exists when registering
 def doesUserExist(uN):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -39,6 +44,7 @@ def doesUserExist(uN):
     else:
         return True 
 
+#Obtaining the user type
 def getUserType(userID):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -49,6 +55,7 @@ def getUserType(userID):
     db.close()
     return userType
 
+#Obtaining the password of a user
 def getPass(userID):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
@@ -59,6 +66,7 @@ def getPass(userID):
     db.close()
     return password
 
+#Channging the password of the user
 def changePass(userID, newPass):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
