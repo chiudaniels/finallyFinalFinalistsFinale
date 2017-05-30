@@ -36,6 +36,13 @@ def register():
 		session["userID"] = tools.getUserID(data["username"])
 	return redirect(url_for("showMainPage"))
 
+@app.route("/addEvent/", methods = ['POST'])
+def addEvent():
+	if tools.getUserType(session["userID"]) == "teacher":
+		return render_template("addEvent.html")
+	else:	
+		return render_template("main.html")
+
 #Helper Functions
 def isLoggedIn():
 	return "userID" in session

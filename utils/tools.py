@@ -17,6 +17,10 @@ def changePass(userID, password):
 #Obtaining the user ID
 def getUserID(username):
     return database.getUserID(username)
+
+#Obtaining the user type
+def getUserType(userID):
+    return database.getUserType(userID)
     
 #Check if the account exists in the database
 def isValidRegister(pass1, pass2, username):
