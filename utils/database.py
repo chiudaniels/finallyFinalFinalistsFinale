@@ -74,3 +74,27 @@ def changePass(userID, newPass):
     c.execute(cmd)
     db.commit()
     db.close()
+
+#Adding a new class to a user's schedule
+def getClasses(userId):
+    db = sqlite3.connect("data/main.db")
+    c = db.cursor()
+    cmd = "SELECT * FROM AccountInfo WHERE userID = '%s';"%(userId)
+    sel = c.execute(cmd).fetchone()
+    classes = sel[5]
+    db.close()
+    return classes
+
+def getClass(userId, classNumber):
+    classes=getClasses(userId)
+    return classes.split("::")[classNumber]
+
+def addClass(userId, classId):
+    classes = getClasses(userId)
+    classes += (str(classId) + "::")
+    db = sqlite3.connect("data/main.db")
+    c = db.cursor()
+    cmd = "UPDATE AccountInfo SET classes = '%s' WHERE UserID = %d;"%(classId, userId)
+    c.execute(cmd)
+    db.commit()
+    db.close()
