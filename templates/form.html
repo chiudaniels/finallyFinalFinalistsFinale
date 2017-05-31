@@ -139,48 +139,18 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    
-    <div class="row">
-
-      <div class="col-md-8">
-
-		<div class="month"> 
-		  <ul>
-			<li class="prev" onclick="clickChangeMonthPrevious()">&#10094;</li>
-			<li class="next" onclick="clickChangeMonthFoward()">&#10095;</li>
-			<li id="month">
-			  </li>
-			<br>
-			<li>
-			  <span style="font-size:18px"> <p id="year"></p> </span>
-			</li>
-		  </ul>
-		</div>
-
-		<ul class="weekdays">
-		  <li>Mo</li>
-		  <li>Tu</li>
-		  <li>We</li>
-		  <li>Th</li>
-		  <li>Fr</li>
-		  <li>Sa</li>
-		  <li>Su</li>
-		</ul>
-
-		<ul class="days" id="days">
-		  <!-- add the dates <li>#</li> through javascript / d3
-		  <li><span class="active">10</span></li>
-		  -->
-		</ul>
-	
-      </div> <!-- col close -->
-
-      <div class="col-md-4">
+    <form>
+      <div class="form-group">
+	<label for="title"> </label>
+	<input type="text" class="form-control" id="event">
       </div>
       
-    </div> <!-- row close -->
-	
-    <script src="../static/calendar.js"></script>
+      <div class="form-group">
+	<label for="title"> </label>
+	<input type="text" class="form-control" id="desctiption">
+      </div>
+    </form>
+
   </body>
-  
+
 </html>

@@ -120,7 +120,7 @@ var clickChangeMonthFoward= function(){
     checkYear();
     changeYear();
     changeMonth(currentMonth);
-    getMonth= getMonthInfo(currentMonth,2017);
+    getMonth= getMonthInfo(currentMonth,currentYear);
     makeCalendar(getMonth[0],getMonth[1]);
     //console.log(currentMonth);
     
@@ -131,13 +131,14 @@ var clickChangeMonthPrevious= function(){
     checkYear();
     changeYear();
     changeMonth(currentMonth);
-    getMonth= getMonthInfo(currentMonth,2017);
+    getMonth= getMonthInfo(currentMonth,currentYear);
     makeCalendar(getMonth[0],getMonth[1]);
    // console.log(currentMonth);
 }
 //
 
 getDay(2017,4,26);
+changeYear();
 changeMonth(currentMonth);
 makeCalendar(getMonth[0],getMonth[1]);
 
