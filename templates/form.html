@@ -8,32 +8,54 @@
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script>
-		$("#first").keyup(function() {
-		  var id = $(this).val();
-		  if ((id).length > 5) {
-			$("#second").fadeIn("slow");
-		  }
-		  else
-			{
-			  $("#second").fadeOut("slow");
-			}
-		})
-		
-		$('select[name=monthSelect]').keyup(function () {
-			'use strict';
+	  <!-- questionaire transition  -->
+	  $("#first").keyup(function() {
+	  var id = $(this).val();
+	  if ((id).length > 5) {
+	  $("#second").fadeIn("slow");
+	  }
+	  else
+	  {
+	  $("#second").fadeOut("slow");
+	  }
+	  })
+	  
+	  <!-- month + day checker  -->
+	  $('select[name=monthSelect]').keyup(function () {
+	  'use strict';
 
-			if ($('input[name=pass]').val() === $(this).val()) {
-				$('#pass_hint').html('match');
-				$(this)[0].setCustomValidity('');
-			} else {
-				$('#pass_hint').html('mismatch');
-				$(this)[0].setCustomValidity('Passwords must match');
-			}
-		});	
-		
+	  if ($(this).val() % 2 === 0) {
+	  
+	  if ($('select[id=daySelect]').val() < 32 && $('select[id=daySelect]').val() > 0){
+	    $('#dayError').html('Valid');
+	    $(this)[0].setCustomValidity('');
+	    }
+	    
+	    else {SW
+	    $('#dayError').html('Invalid Day');
+	    $(this)[0].setCustomValidity('Invalid Day');
+	    }
+	    }
+
+	    else{
+	    if ($('select[id=daySelect]').val() < 31 && $('select[id=daySelect]').val() > 0){
+	      $('#dayError').html('Valid');
+	      $(this)[0].setCustomValidity('');
+	      }
+	      
+	      else {
+	      $('#dayError').html('Invalid Day');
+	      $(this)[0].setCustomValidity('Invalid Day');
+	      }
+	      }
+
+	      }
+	   }
+	    
+	    
 	</script>
 	<style>
-		.logreg{
+	  .logreg{
 			padding: 20px 40px 0px 40px;
 			min-width: 300px;
 		}
