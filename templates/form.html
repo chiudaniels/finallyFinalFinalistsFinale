@@ -6,6 +6,32 @@
 	<link rel="stylesheet" type="text/css" href="../static/style.css">
     <script src="../static/bootstrap/js/jquery.min.js"></script>
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script>
+		$("#first").keyup(function() {
+		  var id = $(this).val();
+		  if ((id).length > 5) {
+			$("#second").fadeIn("slow");
+		  }
+		  else
+			{
+			  $("#second").fadeOut("slow");
+			}
+		})
+		
+		$('select[name=monthSelect]').keyup(function () {
+			'use strict';
+
+			if ($('input[name=pass]').val() === $(this).val()) {
+				$('#pass_hint').html('match');
+				$(this)[0].setCustomValidity('');
+			} else {
+				$('#pass_hint').html('mismatch');
+				$(this)[0].setCustomValidity('Passwords must match');
+			}
+		});	
+		
+	</script>
 	<style>
 		.logreg{
 			padding: 20px 40px 0px 40px;
@@ -140,16 +166,41 @@
     </nav>
 
     <form>
-      <div class="form-group">
-	<label for="title"> </label>
-	<input type="text" class="form-control" id="event">
-      </div>
-      
-      <div class="form-group">
-	<label for="description"> </label>
-	<input type="text" class="form-control" id="description">
-      </div>
-    </form>
+		<div class="form-group">
+			<label for="monthSelect">Month</label>
+			<select class="form-control" id="monthSelect">
+			  <option value=0>January</option>
+			  <option value=1>February</option>
+			  <option value=2>March</option>
+			  <option value=3>April</option>
+			  <option value=4>May</option>
+			  <option value=5>June</option>
+			  <option value=6>July</option>
+			  <option value=7>August</option>
+			  <option value=8>September</option>
+			  <option value=9>October</option>
+			  <option value=10>November</option>
+			  <option value=11>December</option>
+			</select>
+		  </div>
+			
+		<div class="form-group">
+			<label for="daySelect"> </label>
+			<input type="text" class="form-control" id="daySelect">
+		</div>
+		
+		
+		
+		 <div class="form-group">
+			<label for="title"> </label>
+			<input type="text" class="form-control" id="event">
+		  </div>
+		  
+		  <div class="form-group">
+			<label for="description"> </label>
+			<input type="text" class="form-control" id="description">
+		  </div>
+		</form>
 
   </body>
 
