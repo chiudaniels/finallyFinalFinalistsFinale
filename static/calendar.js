@@ -34,7 +34,8 @@ var makeCalendar = function(numDays, dayStart){
     // makes empty space for days of last month//
     for (i=0; i< dayStart-1; i++){
 		makeLi= document.createElement("li");
-		addDay= document.createTextNode(' ');
+		addDay= document.createTextNode('b');
+		makeLi.className = "empty";
 		makeLi.appendChild(addDay);
 		ele.appendChild(makeLi);
     }
@@ -44,6 +45,7 @@ var makeCalendar = function(numDays, dayStart){
     for (i=1; i< numDays+1; i++){
 		makeLi= document.createElement("li");
 		addDay= document.createTextNode(i);
+		makeLi.className = "selected";
 		makeLi.appendChild(addDay);
 		ele.appendChild(makeLi);
     }
@@ -109,7 +111,7 @@ var changeYear=function(){
 var getDays = document.getElementById('days');
 var dayLi= getDays.getElementsByTagName("li");
 var addEvent = function(day,event){
-    dayLi[day-1].innerHTML= day + "<br>" + event;
+    dayLi[day-1].innerHTML= day + "<br>"+ event;
 }
 //
 
