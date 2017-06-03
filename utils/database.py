@@ -25,8 +25,7 @@ def getUserID(uN):
 #Registering the account information and type of account
 def registerAccountInfo(uN, hP, type):
     db = sqlite3.connect("data/main.db")
-    c = db.cursor()
-        
+    c = db.cursor()        
     addAT = "INSERT INTO AccountInfo(username,hashedPass,userType,classes) VALUES ('%s','%s','%s','');"%(uN,hP,type)
     c.execute(addAT)
     db.commit()
@@ -75,26 +74,32 @@ def changePass(userID, newPass):
     db.commit()
     db.close()
 
-#Adding a new class to a user's schedule
+#Getting the array of the classes that the user has
 def getClasses(userId):
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
     cmd = "SELECT * FROM AccountInfo WHERE userID = '%s';"%(userId)
     sel = c.execute(cmd).fetchone()
-    classes = sel[5]
+    classes = sel[3].split("::")
     db.close()
-    return classes
-
-def getClass(userId, classNumber):
-    classes=getClasses(userId)
-    return classes.split("::")[classNumber]
-
+    return classes[:-1] #removes the last empty string as a result of the delimiter
+	
+#Adding a new class to a user's schedule
 def addClass(userId, classId):
     classes = getClasses(userId)
     classes += (str(classId) + "::")
     db = sqlite3.connect("data/main.db")
     c = db.cursor()
-    cmd = "UPDATE AccountInfo SET classes = '%s' WHERE UserID = %d;"%(classId, userId)
+    cmd = "UPDATE AccountInfo SET classes = '%s' WHERE UserID = %d;"%(classes, userId)
     c.execute(cmd)
     db.commit()
     db.close()
+
+#Events Table -----------------------------------------------------
+def createEvent(name,month,day,year,description):
+	db = sqlite3.connect("data/main.db")
+	c = db.cursor()
+	event = "INSERT INTO Events(name,month,day,year,description) VALUES ('%s','%s','%d','%d','%s');"%(name,month,day,year,description)
+	c.execute(event)
+	db.commit()
+	db.close()

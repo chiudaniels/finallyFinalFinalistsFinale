@@ -31,6 +31,10 @@ def register(username, password,type):
     return database.registerAccountInfo(username, hashed(password),type)
 
 #Events----------------------------------------------------
+#Create an event
+def createEvent(name,month,day,year,description):
+	return database.createEvent(name,month,day,year,description)
+
 #Get an event based on date
 def getEvent(day,month,year):
 	return database.getEvent(day,month,year)
@@ -39,6 +43,14 @@ def getEvent(day,month,year):
 def getEventInfo(eventID):
 	return database.getEventInfo(eventID)
 
+#Classes----------------------------------------------------
+#Add a class to an account
+def	addClass(userID, classID):
+	return database.addClass(userID,classID)
+
+def getClasses(userID):
+	return database.getClasses(userID)
+	
 #HELPERS--------------------------------------
 def hashed(unhashed):
     return hashlib.sha512(unhashed).hexdigest()

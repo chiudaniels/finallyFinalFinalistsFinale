@@ -7,6 +7,7 @@ app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
+    print tools.getClasses(1)
     if (not isLoggedIn()):
         return render_template('main.html', isLoggedIn = str(False))
     else:
