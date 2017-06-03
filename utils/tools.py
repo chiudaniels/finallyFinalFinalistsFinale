@@ -34,10 +34,10 @@ def register(username, password,type):
 #Create an event
 def createEvent(name,month,day,year,description):
 	return database.createEvent(name,month,day,year,description)
-
+	
 #Get an event based on date
-def getEvent(day,month,year):
-	return database.getEvent(day,month,year)
+def getEvent(month,day,year):
+	return database.getEvent(month,day,year)
 
 #Get the event's information
 def getEventInfo(eventID):

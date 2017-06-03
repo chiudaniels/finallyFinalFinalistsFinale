@@ -96,6 +96,7 @@ def addClass(userId, classId):
     db.close()
 
 #Events Table -----------------------------------------------------
+#Registers event into the Events table
 def createEvent(name,month,day,year,description):
 	db = sqlite3.connect("data/main.db")
 	c = db.cursor()
@@ -103,3 +104,11 @@ def createEvent(name,month,day,year,description):
 	c.execute(event)
 	db.commit()
 	db.close()
+
+#Grabs all information about the event
+def getEvent(month,day,year):
+	db = sqlite3.connect("data/main.db")
+	c = db.cursor()
+	cmd = "SELECT * FROM Events WHERE (month = '%s' AND day = '%d' AND year = '%d');"%(month,day,year)
+	sel = c.execute(cmd).fetchone()
+	return sel
