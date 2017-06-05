@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, session, url_for, redirect
 
 from utils import tools
 
+import json
+
 app = Flask(__name__)
 app.secret_key = "narutoisbased"
 
@@ -50,6 +52,20 @@ def pushEvent():
 	data = request.form
 	tools.createEvent(data["title"],data["month"],int(data["day"]),int(data["year"]),data["description"])
 	return redirect(url_for("showMainPage"))
+
+@app.route("/eventExists/")
+def eventExists():
+	data = request.args
+
+	month = data.get("month")
+	day = data.get("day")
+	year = data.get("year")
+
+	event = tools.getEvent(month,int(day),int(year))
+	if event != None:
+		event = {"title" : event[0], "month" : event[1], "day" : event[2], "year" : event[3], "description" : event[4]}
+	
+	return json.dumps(event)
 
 #Helper Functions
 def isLoggedIn():

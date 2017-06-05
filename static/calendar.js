@@ -46,6 +46,19 @@ var makeCalendar = function(numDays, dayStart){
 		makeLi= document.createElement("li");
 		addDay= document.createTextNode(i);
 		makeLi.className = "selected";
+		
+		var presDate = {'day' : i, 'month' : monthArray[currentMonth-1], 'year' : currentYear}
+
+		$.ajax({
+			url: "/eventExists/",
+			type: "GET",
+			data: presDate,
+			success: function(d) {
+				d = JSON.parse(d);
+				
+			}		
+		});
+
 		makeLi.appendChild(addDay);
 		ele.appendChild(makeLi);
     }

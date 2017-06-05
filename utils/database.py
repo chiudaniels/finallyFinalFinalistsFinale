@@ -115,4 +115,6 @@ def getEvent(month,day,year):
 	c = db.cursor()
 	cmd = "SELECT * FROM Events WHERE (month = '%s' AND day = '%d' AND year = '%d');"%(month,day,year)
 	sel = c.execute(cmd).fetchone()
+	if sel != None:
+		return sel[1:]
 	return sel
