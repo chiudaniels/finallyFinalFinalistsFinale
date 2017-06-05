@@ -82,3 +82,9 @@ body {font-family: Verdana, sans-serif;}
     background: #1abc9c;
     color: white !important
 }
+
+#form{
+	padding-left: 12%;
+	padding-right: 12%;
+	padding-top: 5%;
+}
