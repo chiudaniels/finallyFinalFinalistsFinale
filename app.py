@@ -45,6 +45,16 @@ def addEvent():
 	else:	
 		return render_template("main.html")
 
+@app.route("/pushEvent/", methods = ['POST'])
+def pushEvent():
+	data = request.form
+	print data["month"]
+	print data["day"]
+	print data["year"]
+	print data["title"]
+	print data["description"]
+	return redirect(url_for("showMainPage"))
+
 #Helper Functions
 def isLoggedIn():
 	return "userID" in session
