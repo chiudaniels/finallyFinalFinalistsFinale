@@ -7,7 +7,7 @@ app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
-    tools.getEvent("December",12,2017)
+    print tools.getEvent("December",25,2017)
     if (not isLoggedIn()):
         return render_template('main.html', isLoggedIn = str(False))
     else:
@@ -48,11 +48,7 @@ def addEvent():
 @app.route("/pushEvent/", methods = ['POST'])
 def pushEvent():
 	data = request.form
-	print data["month"]
-	print data["day"]
-	print data["year"]
-	print data["title"]
-	print data["description"]
+	tools.createEvent(data["title"],data["month"],int(data["day"]),int(data["year"]),data["description"])
 	return redirect(url_for("showMainPage"))
 
 #Helper Functions

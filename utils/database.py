@@ -98,10 +98,14 @@ def addClass(userId, classId):
 #Events Table -----------------------------------------------------
 #Registers event into the Events table
 def createEvent(name,month,day,year,description):
+	print name
+	print month
+	print day
+	print year
+	print description
 	db = sqlite3.connect("data/main.db")
 	c = db.cursor()
-	event = "INSERT INTO Events(name,month,day,year,description) VALUES ('%s','%s','%d','%d','%s');"%(name,month,day,year,description)
-	c.execute(event)
+	c.execute("INSERT INTO Events(name,month,day,year,description) VALUES (?,?,?,?,?);",[name,month,day,year,description])
 	db.commit()
 	db.close()
 

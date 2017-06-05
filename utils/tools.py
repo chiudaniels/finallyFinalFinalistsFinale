@@ -45,7 +45,7 @@ def getEventInfo(eventID):
 
 #Classes----------------------------------------------------
 #Add a class to an account
-def	addClass(userID, classID):
+def addClass(userID, classID):
 	return database.addClass(userID,classID)
 
 def getClasses(userID):
