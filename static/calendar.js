@@ -13,7 +13,6 @@
     // november:3,
     // december:5,
 // };
-
 var monthArray= ["January","February","March","April","May",
 "June","July","August","September","October","November","December"];
 
@@ -40,29 +39,40 @@ var makeCalendar = function(numDays, dayStart){
 		ele.appendChild(makeLi);
     }
     ///
-
+	
     // makes actual days //
-    for (i=1; i< numDays+1; i++){
-		makeLi= document.createElement("li");
-		addDay= document.createTextNode(i);
-		makeLi.className = "selected";
-		
-		var presDate = {'day' : i, 'month' : monthArray[currentMonth-1], 'year' : currentYear}
-
-		$.ajax({
-			url: "/eventExists/",
-			type: "GET",
-			data: presDate,
-			success: function(d) {
-				d = JSON.parse(d);
+	
+	for(i = 1; i < numDays +1; i++){
+			makeLi= document.createElement("li");
+			addDay= document.createTextNode(i);
+			makeLi.className = "selected";
+			
+			var presDate = {'day' : i, 'month' : monthArray[currentMonth-1], 'year' : currentYear}
+			
+			$.ajax({
+				url: "/eventExists/",
+				type: "GET",
+				data: presDate,
+				async: false,
+				success: function(d) {
+					d = JSON.parse(d);
+					if (d != null){
+						makeLi.style.backgroundColor = "yellow";
+						makeLi.popover({
+							html: true,
+							title: "BOOOOOOK",
+							content: "ASDASDASDASDA"
+						});
+					}
 				
-			}		
-		});
-
-		makeLi.appendChild(addDay);
-		ele.appendChild(makeLi);
-    }
+				}		
+			});
+			
+			makeLi.appendChild(addDay);
+			ele.appendChild(makeLi);
+	}
     ///
+
 }
 
 
