@@ -9,7 +9,6 @@ app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
-    print tools.getEvents()
     if (not isLoggedIn()):
         return render_template('main.html', isLoggedIn = str(False))
     else:
@@ -43,9 +42,9 @@ def register():
 def addEvent():
 	if isLoggedIn():
 		if tools.getUserType(session["userID"]) == "teacher":
-			return render_template("form.html")
+			return render_template("form.html", isLoggedIn = str(True))
 	else:	
-		return render_template("main.html")
+		return redirect(url_for("showMainPage"))
 
 @app.route("/eventList/")
 def eventList():
