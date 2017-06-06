@@ -28,7 +28,7 @@ var getDay= function(day,month,year){
 var makeCalendar = function(numDays, dayStart){
 	
 	ele = $("#days");
-	ele.html="";
+	ele.html("")
 	
     // makes empty space for days of last month//
     for (i=0; i< dayStart-1; i++){
@@ -60,7 +60,8 @@ var makeCalendar = function(numDays, dayStart){
 						makeLi.popover({
 							html: true,
 							title: d["title"],
-							content: d["description"]
+							content: d["description"],
+							trigger: "hover"
 						});
 					}
 				
