@@ -16,6 +16,8 @@
 var monthArray= ["January","February","March","April","May",
 "June","July","August","September","October","November","December"];
 
+var today= new Date();
+
 var getDay= function(day,month,year){
     d = new Date(year,month-1,day);
     console.log(d.getDate());
@@ -117,7 +119,7 @@ var changeMonth= function(month){
 }
 
 
-var currentMonth=1;
+var currentMonth= today.getMonth()+1;
 var getMonth= getMonthInfo(currentMonth,2017);
 ///
 
