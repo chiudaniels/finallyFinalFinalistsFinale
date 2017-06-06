@@ -65,9 +65,13 @@ var makeCalendar = function(numDays, dayStart){
 						});
 					}
 				
-				}		
+				}
+				makeLi.setAttribute("data-toggle","popover");
+				makeLi.setAttribute("title",d["title"]);
+				makeLi.setAttribute("data-content",d["description"]);								
 			});
 			
+
 			makeLi.appendChild(addDay);
 			ele.appendChild(makeLi);
 	}
@@ -75,6 +79,9 @@ var makeCalendar = function(numDays, dayStart){
 
 }
 
+var makePopover = function(day,title,desc,tagName){
+	document.getElemntBy
+}
 
 //month stuff//
 
@@ -137,6 +144,7 @@ var addEvent = function(day,event){
     dayLi[day-1].innerHTML= day + "<br>"+ event;
 }
 //
+
 
 
 //change month stuff//
