@@ -27,25 +27,24 @@ var getDay= function(day,month,year){
 
 var makeCalendar = function(numDays, dayStart){
 	
-	ele = document.getElementById('days')
-	ele.innerHTML="";
+	ele = $("#days");
+	ele.html="";
 	
     // makes empty space for days of last month//
     for (i=0; i< dayStart-1; i++){
-		makeLi= document.createElement("li");
-		addDay= document.createTextNode('b');
-		makeLi.className = "empty";
-		makeLi.appendChild(addDay);
-		ele.appendChild(makeLi);
+		makeLi = $("<li>");
+		makeLi.text("b");
+		makeLi.attr("class","empty");
+		ele.append(makeLi);
     }
     ///
 	
     // makes actual days //
 	
 	for(i = 1; i < numDays +1; i++){
-			makeLi= document.createElement("li");
-			addDay= document.createTextNode(i);
-			makeLi.className = "selected";
+			makeLi = $("<li>")
+			makeLi.text(i);
+			makeLi.attr("class","selected");
 			
 			var presDate = {'day' : i, 'month' : monthArray[currentMonth-1], 'year' : currentYear}
 			
@@ -57,23 +56,19 @@ var makeCalendar = function(numDays, dayStart){
 				success: function(d) {
 					d = JSON.parse(d);
 					if (d != null){
-						makeLi.style.backgroundColor = "yellow";
+						makeLi.css("background-color","yellow");
 						makeLi.popover({
 							html: true,
-							title: "BOOOOOOK",
-							content: "ASDASDASDASDA"
+							title: d["title"],
+							content: d["description"]
 						});
 					}
 				
-				}
-				makeLi.setAttribute("data-toggle","popover");
-				makeLi.setAttribute("title",d["title"]);
-				makeLi.setAttribute("data-content",d["description"]);								
+				}							
 			});
 			
 
-			makeLi.appendChild(addDay);
-			ele.appendChild(makeLi);
+			ele.append(makeLi);
 	}
     ///
 
