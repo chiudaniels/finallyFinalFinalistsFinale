@@ -75,11 +75,20 @@ var makeCalendar = function(numDays, dayStart){
 
 }
 
-var makePopover = function(day,title,desc,tagName){
-	document.getElemntBy
-}
+var addEventToList = function (events){
+	ele = document.getElementById("events"); 
+	newEvent = document.createElement("li");
+	newEvent.innerHTML = events;
+	ele.appendChild(newEvent);
+	}
+
+var clearEventList = function (){
+	ele= document.getElemntById("events");
+	ele.innerHTML = "";
+}	
 
 //month stuff//
+
 
 var getMonthInfo = function (month,year){
 	// format: results[numDays, dayofweekstart]
