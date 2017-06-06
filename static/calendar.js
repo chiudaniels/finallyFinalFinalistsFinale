@@ -66,6 +66,7 @@ var makeCalendar = function(numDays, dayStart){
 							trigger: "hover"
 						});
 					}
+					addEventToList(d["title"]);
 				
 				}							
 			});
@@ -160,6 +161,7 @@ var clickChangeMonthFoward= function(){
     checkYear();
     changeYear();
     changeMonth(currentMonth);
+	clearEventList();
     getMonth= getMonthInfo(currentMonth,currentYear);
     makeCalendar(getMonth[0],getMonth[1]);
     //console.log(currentMonth);
@@ -171,6 +173,7 @@ var clickChangeMonthPrevious= function(){
     checkYear();
     changeYear();
     changeMonth(currentMonth);
+	clearEventList();
     getMonth= getMonthInfo(currentMonth,currentYear);
     makeCalendar(getMonth[0],getMonth[1]);
    // console.log(currentMonth);
