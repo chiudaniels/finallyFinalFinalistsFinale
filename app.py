@@ -9,7 +9,7 @@ app.secret_key = "narutoisbased"
 
 @app.route('/')
 def showMainPage():
-    print tools.getEvent("December",25,2017)
+    print tools.getEvents()
     if (not isLoggedIn()):
         return render_template('main.html', isLoggedIn = str(False))
     else:
@@ -46,6 +46,10 @@ def addEvent():
 			return render_template("form.html")
 	else:	
 		return render_template("main.html")
+
+@app.route("/eventList/")
+def eventList():
+	return render_template("eventList.html")
 
 @app.route("/pushEvent/", methods = ['POST'])
 def pushEvent():

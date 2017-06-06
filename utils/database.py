@@ -98,14 +98,16 @@ def addClass(userId, classId):
 #Events Table -----------------------------------------------------
 #Registers event into the Events table
 def createEvent(name,month,day,year,description):
-	print name
-	print month
-	print day
-	print year
-	print description
 	db = sqlite3.connect("data/main.db")
 	c = db.cursor()
 	c.execute("INSERT INTO Events(name,month,day,year,description) VALUES (?,?,?,?,?);",[name,month,day,year,description])
+	db.commit()
+	db.close()
+	
+def removeEvent(id):
+	db = sqlite3.connect("data/main.db")
+	c = db.cursor()
+	c.execute("DELETE FROM Events WHERE id = ?",[id])
 	db.commit()
 	db.close()
 
@@ -118,3 +120,10 @@ def getEvent(month,day,year):
 	if sel != None:
 		return sel[1:]
 	return sel
+
+def getEvents():
+	db = sqlite3.connect("data/main.db")
+	c = db.cursor()
+	cmd = "SELECT * FROM EVENTS"
+	sel = c.execute(cmd).fetchall()
+	print sel

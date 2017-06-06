@@ -39,6 +39,10 @@ def createEvent(name,month,day,year,description):
 def getEvent(month,day,year):
 	return database.getEvent(month,day,year)
 
+#Get a list of all events
+def getEvents():
+	return database.getEvents()
+
 #Get the event's information
 def getEventInfo(eventID):
 	return database.getEventInfo(eventID)
