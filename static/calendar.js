@@ -65,8 +65,8 @@ var makeCalendar = function(numDays, dayStart){
 							content: d["description"],
 							trigger: "hover"
 						});
+						addEventToList(d["title"]);
 					}
-					addEventToList(d["title"]);
 				
 				}							
 			});
@@ -79,15 +79,15 @@ var makeCalendar = function(numDays, dayStart){
 }
 
 var addEventToList = function (events){
-	ele = document.getElementById("events"); 
+	eleo = document.getElementById("events"); 
 	newEvent = document.createElement("li");
 	newEvent.innerHTML = events;
-	ele.appendChild(newEvent);
+	eleo.appendChild(newEvent);
 	}
 
 var clearEventList = function (){
-	ele= document.getElemntById("events");
-	ele.innerHTML = "";
+	eles = document.getElementById("events");
+	eles.innerHTML = "";
 }	
 
 //month stuff//
