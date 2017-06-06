@@ -10,13 +10,22 @@ body {
     padding: 70px 25px;
     width: 100%;
     background: #1abc9c;
-	color:white;
+    color: white;
+    box-shadow: 2px 3px 2px #888888;
 }
 
 #evens{
 	text-align:center;
 	padding: 3%;
 	background:white;
+}
+
+.sideEvents{
+	box-shadow: 2px 2px 2px #888888;
+	background-color: white;
+	padding: 5%;
+	text-align: center;
+	color: black;	
 }
 
 /* Month header */

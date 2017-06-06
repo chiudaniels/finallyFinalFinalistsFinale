@@ -79,15 +79,16 @@ var makeCalendar = function(numDays, dayStart){
 }
 
 var addEventToList = function (events){
-	eleo = document.getElementById("events"); 
-	newEvent = document.createElement("li");
+	eleo = document.getElementById("eventSide"); 
+	newEvent = document.createElement("div");
+	newEvent.className = "row col-md-12 sideEvents";
 	newEvent.innerHTML = events;
 	eleo.appendChild(newEvent);
-	}
+}
 
 var clearEventList = function (){
-	eles = document.getElementById("events");
-	eles.innerHTML = "";
+	eles = $("#eventSide");
+	eles.children().remove(".sideEvents");
 }	
 
 //month stuff//
@@ -173,7 +174,7 @@ var clickChangeMonthPrevious= function(){
     checkYear();
     changeYear();
     changeMonth(currentMonth);
-	clearEventList();
+    clearEventList();
     getMonth= getMonthInfo(currentMonth,currentYear);
     makeCalendar(getMonth[0],getMonth[1]);
    // console.log(currentMonth);
