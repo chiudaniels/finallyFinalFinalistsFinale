@@ -1,4 +1,4 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   
   <head>  
@@ -10,6 +10,11 @@
 		.logreg{
 			padding: 20px 40px 0px 40px;
 			min-width: 300px;
+		}
+
+		.class {
+		        height: 30%;
+		        border: 1px solid black;
 		}
 	</style>
   </head>
@@ -32,20 +37,9 @@
 	<!-- title -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Teachers</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-		<li><a href="#">classes</a></li>
-		<li><a href="#">Another action</a></li>
-		<li><a href="#">Something else here</a></li>
-		<li class="divider"></li>
-		<li><a href="#">Separated link</a></li>
-		<li class="divider"></li>
-		<li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li class="active"><a href="/">Home</a></li>
+			<li><a href="/addEvent/">Add Event</a></li>
+            <li><a href="/eventList/">List of Events</a></li>
 	  </ul>
 	  
 	  <!-- probably dont need
@@ -85,7 +79,7 @@
 			
 			<div class="form-group">
 			  <label class="sr-only" for="exampleTeacherCode">Teacher Code</label>
-			  <input type="password" class="form-control" name= "code"  placeholder="Teacher Confirmation Code (optional)">
+			  <input type="text" class="form-control" name= "code"  placeholder="Teacher Confirmation Code (optional)">
 			</div>
 			
 			<div class="form-group">
@@ -139,48 +133,20 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    
-    <div class="row">
-
-      <div class="col-md-8">
-
-		<div class="month"> 
-		  <ul>
-			<li class="prev" onclick="clickChangeMonthPrevious()">&#10094;</li>
-			<li class="next" onclick="clickChangeMonthFoward()">&#10095;</li>
-			<li id="month">
-			  </li>
-			<br>
-			<li>
-			  <span style="font-size:18px"> <p id="year">2016</p> </span>
-			</li>
-		  </ul>
-		</div>
-
-		<ul class="weekdays">
-		  <li>Mo</li>
-		  <li>Tu</li>
-		  <li>We</li>
-		  <li>Th</li>
-		  <li>Fr</li>
-		  <li>Sa</li>
-		  <li>Su</li>
-		</ul>
-
-		<ul class="days" id="days">
-		  <!-- add the dates <li>#</li> through javascript / d3
-		  <li><span class="active">10</span></li>
-		  -->
-		</ul>
-	
-      </div> <!-- col close -->
-
-      <div class="col-md-4">
+    <div class = "row">
+      <div class = "col-md-3 class">
+          sadf
       </div>
-      
-    </div> <!-- row close -->
-	
-    <script src="../static/calendar.js"></script>
+    <div class = "col-md-3 class">
+        asdf
+      </div>
+        <div class = "col-md-3 class">a
+            adsfa
+      </div>
+        <div class = "col-md-3 class">
+            adfs
+      </div>
+    </div>
+    
   </body>
-  
-</html>
+  </html>
