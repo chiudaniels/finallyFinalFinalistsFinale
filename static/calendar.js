@@ -59,6 +59,7 @@ var makeCalendar = function(numDays, dayStart){
 					d = JSON.parse(d);
 					if (d != null){
 						makeLi.css("background-color","#A9B6C0");
+						makeLi.hover(function(){$(this).css("box-shadow","2px 2px 2px #888888")},function(){$(this).css("box-shadow","none")});
 						makeLi.popover({
 							html: true,
 							title: d["title"],
