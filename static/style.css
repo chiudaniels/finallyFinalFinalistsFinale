@@ -9,7 +9,7 @@ body {
 .eventTitle {
     padding: 70px 25px;
     width: 100%;
-    background: #1abc9c;
+    background: #A9B6C0;
     color: white;
     box-shadow: 2px 3px 2px #888888;
 }
@@ -32,7 +32,7 @@ body {
 .month {
     padding: 70px 25px;
     width: 100%;
-    background: #1abc9c;
+    background: #A9B6C0;
 }
 
 /* Month list */
@@ -65,7 +65,7 @@ body {
 .weekdays {
     margin: 0;
     padding: 10px 0;
-    background-color:#ddd;
+    background-color:#C7D8C6;
 }
 
 .weekdays li {
@@ -83,15 +83,17 @@ body {
 }
 
 .days li {
+	padding-top: 4%;
+	vertical-align: middle;
     list-style-type: none;
     display: inline-block;
 	height: 100px;
     width: 13.6%;
     text-align: center;
     margin: 0px 0px 5px 5px;
-    border: 1px solid black;
-    font-size:12px;
-    color:#777;
+    font-size:20px;
+    color:white;
+
 }
 
 .empty{
@@ -100,7 +102,7 @@ body {
 
 .selected{
 	height: 100%;
-    background-color: lightblue;
+    background-color: #CCCBC6;
 }
 
 /* Highlight the "current" day */
