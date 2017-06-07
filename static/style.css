@@ -4,6 +4,14 @@ body {
 	font-family: Verdana, sans-serif;
 	cursor: default;
 	user-select: none;
+	margin: 0;
+	padding: 0;
+}
+
+.calendario{
+	box-shadow: 2px 2px 2px #888888;
+	margin: 0px 64px;
+	padding: 0px;
 }
 
 .eventTitle {
