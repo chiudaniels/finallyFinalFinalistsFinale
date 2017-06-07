@@ -43,6 +43,8 @@ def addEvent():
 	if isLoggedIn():
 		if tools.getUserType(session["userID"]) == "teacher":
 			return render_template("form.html", isLoggedIn = str(True))
+		else:
+			return redirect(url_for("showMainPage"))
 	else:	
 		return redirect(url_for("showMainPage"))
 
