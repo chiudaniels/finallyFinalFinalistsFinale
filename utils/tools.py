@@ -34,6 +34,10 @@ def register(username, password,type):
 #Create an event
 def createEvent(name,month,day,year,description):
 	return database.createEvent(name,month,day,year,description)
+
+#Remove an event
+def removeEvent(id):
+	return database.removeEvent(id)
 	
 #Get an event based on date
 def getEvent(month,day,year):

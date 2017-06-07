@@ -66,7 +66,7 @@ var makeCalendar = function(numDays, dayStart){
 							content: d["description"],
 							trigger: "hover"
 						});
-						addEventToList(d["title"]);
+						addEventToList(d["title"],d["id"]);
 					}
 				
 				}							
@@ -79,9 +79,27 @@ var makeCalendar = function(numDays, dayStart){
 
 }
 
-var addEventToList = function (events){
+var addEventToList = function (events, id){
 	eleo = document.getElementById("eventSide"); 
 	newEvent = document.createElement("div");
+	newEvent.id = id;
+	idList = {"id" : id}
+	
+	newEvent.ondblclick = function(){
+		$.ajax({
+			url: "/eventRemoval/",
+			type: "GET",
+			data: idList,
+			success: function(d){
+				d = JSON.parse(d);
+				if (d["type"] == "teacher"){
+					$("#" + id).remove();
+					makeCalendar(getMonth[0],getMonth[1]);	
+				};
+			} 
+		})
+	};
+	
 	newEvent.className = "row col-md-12 sideEvents";
 	newEvent.innerHTML = events;
 	eleo.appendChild(newEvent);

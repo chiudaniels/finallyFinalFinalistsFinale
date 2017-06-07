@@ -66,9 +66,21 @@ def eventExists():
 
 	event = tools.getEvent(month,int(day),int(year))
 	if event != None:
-		event = {"title" : event[0], "month" : event[1], "day" : event[2], "year" : event[3], "description" : event[4]}
+		event = {"id" : event[0], "title" : event[1], "month" : event[2], "day" : event[3], "year" : event[4], "description" : event[5]}
 	
 	return json.dumps(event)
+
+@app.route("/eventRemoval/")
+def eventRemoval():
+	data = request.args
+	id = data.get("id")
+	if isLoggedIn():
+		print "moo"
+		if tools.getUserType(session["userID"]) == "teacher":
+				tools.removeEvent(int(id))
+				return json.dumps({"type" : "teacher"})
+	else:	
+		return json.dumps({"type" : "student"})
 
 #Helper Functions
 def isLoggedIn():

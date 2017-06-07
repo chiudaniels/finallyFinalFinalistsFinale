@@ -10,7 +10,7 @@ body {
 
 .calendario{
 	box-shadow: 2px 2px 2px #888888;
-	margin: 0px 64px;
+	margin: 0% 3%;
 	padding: 0px;
 }
 
@@ -34,6 +34,10 @@ body {
 	padding: 5%;
 	text-align: center;
 	color: black;	
+}
+
+.sideEvents:hover{
+	background-color: #FF6666;
 }
 
 /* Month header */
@@ -91,11 +95,11 @@ body {
 }
 
 .days li {
-	padding-top: 3%;
-	vertical-align: middle;
+    padding-top: 3%;
+    vertical-align: middle;
     list-style-type: none;
     display: inline-block;
-	height: 100px;
+    height: 100px;
     width: 13.6%;
     text-align: center;
     margin: 0px 0px 5px 5px;
