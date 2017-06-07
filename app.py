@@ -34,7 +34,7 @@ def register():
 		if data["code"] == "8Y4vnAUlW8X0RQkc146p":
 			tools.register(data["username"], data["p1"],"teacher")
 		else:
-			tools.register(data["username"], data["p1"],"teacher")
+			tools.register(data["username"], data["p1"],"student")
 		session["userID"] = tools.getUserID(data["username"])
 	return redirect(url_for("showMainPage"))
 
