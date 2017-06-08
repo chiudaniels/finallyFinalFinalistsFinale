@@ -80,24 +80,25 @@ var makeCalendar = function(numDays, dayStart){
 }
 
 var addEventToList = function (events, id){
+	console.log(id);
 	eleo = document.getElementById("eventSide"); 
 	newEvent = document.createElement("div");
-	newEvent.id = id;
-	idList = {"id" : id}
-	
+
 	newEvent.ondblclick = function(){
+		idList = {"id" : id};
 		$.ajax({
 			url: "/eventRemoval/",
 			type: "GET",
 			data: idList,
+			async: false,
 			success: function(d){
 				d = JSON.parse(d);
 				if (d["type"] == "teacher"){
-					$("#" + id).remove();
+					newEvent.remove();
 					clearEventList();
 					makeCalendar(getMonth[0],getMonth[1]);	
-				};
-			} 
+				}
+			}
 		})
 	};
 	
@@ -105,6 +106,7 @@ var addEventToList = function (events, id){
 	newEvent.innerHTML = events;
 	eleo.appendChild(newEvent);
 }
+
 
 var clearEventList = function (){
 	eles = $("#eventSide");
