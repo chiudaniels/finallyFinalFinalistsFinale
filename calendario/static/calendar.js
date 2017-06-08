@@ -94,6 +94,7 @@ var addEventToList = function (events, id){
 				d = JSON.parse(d);
 				if (d["type"] == "teacher"){
 					$("#" + id).remove();
+					clearEventList();
 					makeCalendar(getMonth[0],getMonth[1]);	
 				};
 			} 
