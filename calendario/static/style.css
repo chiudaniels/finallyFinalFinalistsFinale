@@ -1,0 +1,130 @@
+ul {list-style-type: none;}
+body {
+	background-image:url(ricepaper.png);
+	font-family: Verdana, sans-serif;
+	cursor: default;
+	user-select: none;
+	margin: 0;
+	padding: 0;
+}
+
+.calendario{
+	box-shadow: 2px 2px 2px #888888;
+	margin: 0% 3%;
+	padding: 0px;
+}
+
+.eventTitle {
+    padding: 70px 25px;
+    width: 100%;
+    background: #A9B6C0;
+    color: white;
+    box-shadow: 2px 3px 2px #888888;
+}
+
+#evens{
+	text-align:center;
+	padding: 3%;
+	background:white;
+}
+
+.sideEvents{
+	box-shadow: 2px 2px 2px #888888;
+	background-color: white;
+	padding: 5%;
+	text-align: center;
+	color: black;	
+}
+
+.sideEvents:hover{
+	background-color: #FF6666;
+}
+
+/* Month header */
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #A9B6C0;
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#C7D8C6;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.76%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    padding-top: 3%;
+    vertical-align: middle;
+    list-style-type: none;
+    display: inline-block;
+    height: 100px;
+    width: 13.6%;
+    text-align: center;
+    margin: 0px 0px 5px 5px;
+    font-size:20px;
+    color:white;
+}
+
+.empty{
+    visibility: hidden;
+}
+
+.selected{
+	height: 100%;
+    background-color: #CCCBC6;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+#form{
+	padding-left: 12%;
+	padding-right: 12%;
+	padding-top: 5%;
+}
